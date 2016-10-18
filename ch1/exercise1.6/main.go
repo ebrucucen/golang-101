@@ -44,14 +44,13 @@ func lissajous(out io.Writer) {
 		img := image.NewPaletted(rect, palette)
 		line++
 		for t := 0.0; t < cycles*2*math.Pi; t += res {
-
+			index := 0
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
-			index := math.Mod(float64(line), 4)
-			if index == 0 {
-				index++
-			} else if index == 2 {
-				index++
+			if t < cycles*math.Pi {
+				index = 2.0
+			} else {
+				index = 3.0
 			}
 			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), uint8(index))
 
