@@ -1,0 +1,1 @@
+//modify fetch to also print the http status code. Hint: resp.Status
